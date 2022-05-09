@@ -4,6 +4,7 @@ class TextContainer
 {
 private:
 	char* text;
+	int lenght;
 public:
 	TextContainer();
 	TextContainer(const char* text);
@@ -12,5 +13,6 @@ public:
 	TextContainer(const TextContainer& textCon);
 	~TextContainer();
 	char const* getText()const { return text; }
+	int getLenghtOfText()const;
 
 };

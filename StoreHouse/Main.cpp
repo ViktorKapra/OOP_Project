@@ -14,6 +14,6 @@ void TestTextContainer()
 int main()
 {
 
-	//TestTextContainer();
+	TestTextContainer();
 	return 0;
 }

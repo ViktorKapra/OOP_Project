@@ -6,6 +6,6 @@ cmake_minimum_required (VERSION 3.8)
 project ("StoreHouse")
 
 # Add source to this project's executable.
-add_executable (StoreHouse "Main.cpp"  "TextContainer.h" "Product.h" "TextContainer.cpp" "Date.h" ) #   )
+add_executable (StoreHouse "Main.cpp"  "TextContainer.h" "Product.h" "TextContainer.cpp" "Date.h"  "Date.cpp") #   )
 
 # TODO: Add tests and install targets if needed.

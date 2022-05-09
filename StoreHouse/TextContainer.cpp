@@ -22,10 +22,11 @@ void TextContainer::setText( char const* _text)
 	{
 		delete[] text;
 	}
-	size_t sizeOfText = strlen(_text) + 1;
-	text = new char[sizeOfText];
-	strncpy_s(text, sizeOfText, _text, sizeOfText);
-	text[sizeOfText - 1] = '\0';
+	lenght = strlen(_text) + 1;
+	text = new char[lenght];
+	strncpy_s(text, lenght, _text, lenght);
+	text[lenght - 1] = '\0';
+	
 }
 TextContainer::TextContainer(const TextContainer& textCon) :TextContainer(textCon.text)
 {
@@ -36,4 +37,8 @@ TextContainer::~TextContainer()
 	{
 		delete[] text;
 	}
+}
+int TextContainer::getLenghtOfText() const
+{
+	return strlen(text);
 }
