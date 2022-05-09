@@ -3,6 +3,7 @@
 TextContainer::TextContainer()
 {
 	text = nullptr;
+	lenght = 0;
 }
 TextContainer::TextContainer(char const* _text) :TextContainer()
 {
