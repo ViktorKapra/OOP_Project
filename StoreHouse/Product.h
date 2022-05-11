@@ -2,6 +2,7 @@
 #include "TextContainer.h"
 #include <ctime>
 #include <fstream>
+#include <fstream>
 class Product
 {
 private:
@@ -10,6 +11,7 @@ private:
 	TextContainer manifacturer;
 	TextContainer comment;
 public:
+	Product();
 	Product(char const* _name, char const* _manifacturer,char const* _comment);
 	void setName(char const*);
 	void setManifacturer(char const*);
@@ -18,7 +20,8 @@ public:
 	char const* getName()const { return name.getText(); }
 	char const* getManifacturer()const{ return manifacturer.getText(); }
 	char const* getComment()const { return comment.getText(); }
-	void print(std::ofstream& of);
+	friend std::ostream&  operator<<(std::ostream& of,Product const& product);
+	friend std::istream& operator>>(std::istream& is, Product& product);
 	//friend 
 };
 
