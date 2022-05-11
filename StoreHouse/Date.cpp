@@ -1,8 +1,15 @@
 #include "Date.h"
 #include <fstream>
 #include<iostream>
+#include "DynamicArray.hpp"
 
 
+Date::Date()
+{
+	year = DEFAULT_YEAR;
+	month = DEFAULT_MONTH;
+	day = DEFAULT_DAY;
+}
 void Date::setDay(int _day)
 {
 	if (_day < 1 || _day>31)
@@ -62,28 +69,29 @@ void Date::setYear(int _year)
 	}
 	year = _year;
 }
-bool Date::operator>(Date& date) 
+bool operator>(Date const& first, Date const& second) 
 {
-	if (this->year > date.year) { return true; }
-	else if(this->year< date.year) { return false; }
+	if (first.year > second.year) { return true; }
+	else if(first.year< second.year) { return false; }
 
-	if (this->month > date.month) { return true; }
-	else if (this->month < date.month) { return false; }
+	if (first.month > second.month) { return true; }
+	else if (first.month < second.month) { return false; }
 
-	if (this->day > date.day) { return true; }
+	if (first.day > second.day) { return true; }
 	else{ return false; }
 	
 }
-bool Date::operator<(Date& date) 
+bool operator<(Date const& first, Date const& second)
 {
-	return date > *this;
+	return second > first;
 }
-bool Date::operator==(Date& date) 
+bool operator==(Date const& first, Date const& second)
 {
-	return this->day == date.day &&
-		this->month == date.month &&
-		this->year == date.year;
+	return first.day == second.day &&
+		first.month == second.month &&
+		first.year == second.year;
 }
+
 Date::Date(int _day, int _month, int _year)
 {
 	setYear(_year);
@@ -103,4 +111,44 @@ bool Date::IsLeapYear(int _year)
 	}
 	else { return false; }
 }
-void Date::print(std::ofstream&, Date) {}
+void Date::write(std::ofstream& os)const
+{
+	os.write((const char*)day, sizeof(int));
+	os.write((const char*)month, sizeof(int));
+	os.write((const char*)year, sizeof(int));
+}
+void Date::read(std::ifstream& is)
+{
+	int _day= 0, _month = 0, _year = 0;
+	is.read((char*)_day, sizeof(int));
+	is.read((char*)_month, sizeof(int));
+	is.read((char*)_year, sizeof(int));
+	this->setYear(_year);
+	this->setMonth(_month);
+	this->setDay(_day);
+}
+void swapDates(Date& first, Date& second)
+{
+	Date temp = first;
+	first = second;
+	second = temp;
+}
+
+void sortDates(DynamicArray<Date>& dates)
+{
+	unsigned datesCount = dates.getSize();
+	for (int i = 0; i < datesCount-1; i++)
+	{
+		Date minn = dates[i];
+		int indexMinn = i;
+		for (int y = i + 1; y < datesCount; y++)
+		{
+			if (minn < dates[i])
+			{
+				minn = dates[i];
+				indexMinn = i;
+			}
+			swapDates(dates[indexMinn], dates[i]);
+		}
+	}
+}
