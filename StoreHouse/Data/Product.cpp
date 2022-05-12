@@ -1,10 +1,13 @@
 #include "Product.h"
-#include "IdGenerator.h"
 #include <fstream>
 
 Product::Product()
 {
 	id = 1;
+}
+void Product::setId(int _id)
+{
+	id = _id;
 }
 Product::Product(char const* _name, char const* _manifacturer, char const* _comment)
 {
@@ -28,15 +31,16 @@ void Product::setComment(char const* _comment)
 
 std::ostream& operator<<(std::ostream& of, Product const& product)
 {
-	of << product.id << " " << std::endl 
-		<< product.name.getText()<< " " << std::endl 
-		<< product.manifacturer.getText()<< " " << std::endl 
-		<< product.comment.getText() << std::endl;
+	of << product.id <<  "\n"
+		<< product.name.getText() << "\n"
+		<< product.manifacturer.getText() << "\n"
+		<< product.comment.getText()<<"\n";
 	return of;
 }
 std::istream& operator>>(std::istream& is, Product& product)
 {
 	char data[100];
+	char interval;
 	int sizeOfMessage = 100;
 	int id = 0;
 	is >> product.id;

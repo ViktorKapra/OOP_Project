@@ -1,6 +1,6 @@
 #ifndef _UI_HPP
 #define _UI_HPP
-#include "WareHouseLogic.h"
+#include "../Logic/WareHouseLogic.h"
 class UI
 {
 public:

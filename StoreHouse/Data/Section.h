@@ -1,21 +1,21 @@
 #ifndef _Section_HPP
 #define _Section_HPP
 
-#include<DynamicArray.hpp>
+#include "..\Logic\DynamicArray.hpp"
 #include "Shelf.h"
 #include "Batch.h"
-#include "TextContainer"
+#include "..\Logic\TextContainer.h"
 
 class Section
 {
 private:
 	DynamicArray<Shelf> shelfs;
+	unsigned shelfCapacity ;
 public:
 	Section();
-	void addShelf(Shelf const& shelf);
 	void addBatch(Batch const& batch);
-	void read(TextContainer const& fileName);
-	void write(TextContainer const& fileName);
+	void read(std::ifstream& is);
+	void write(std::ofstream& os);
 	void getProductQuanitiy(Product const& product);
 
 };

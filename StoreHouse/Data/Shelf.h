@@ -2,7 +2,7 @@
 #define SHELF_HPP
 
 
-#include "DynamicArray.hpp"
+#include "..\Logic\DynamicArray.hpp"
 #include "Batch.h"
 #include "Product.h"
 class Shelf

@@ -1,7 +1,8 @@
 #include "Date.h"
 #include <fstream>
 #include<iostream>
-#include "DynamicArray.hpp"
+#include <ctime>
+#include "../Logic/DynamicArray.hpp"
 
 
 Date::Date()
@@ -69,17 +70,17 @@ void Date::setYear(int _year)
 	}
 	year = _year;
 }
-bool operator>(Date const& first, Date const& second) 
+bool operator>(Date const& first, Date const& second)
 {
 	if (first.year > second.year) { return true; }
-	else if(first.year< second.year) { return false; }
+	else if (first.year < second.year) { return false; }
 
 	if (first.month > second.month) { return true; }
 	else if (first.month < second.month) { return false; }
 
 	if (first.day > second.day) { return true; }
-	else{ return false; }
-	
+	else { return false; }
+
 }
 bool operator<(Date const& first, Date const& second)
 {
@@ -104,7 +105,7 @@ bool Date::IsLeapYear(int _year)
 	{
 		if (_year % 100 == 0)
 		{
-			if (_year % 400 == 0){ return true; }
+			if (_year % 400 == 0) { return true; }
 			else return false;
 		}
 		else { return true; }
@@ -119,7 +120,7 @@ void Date::write(std::ofstream& os)const
 }
 void Date::read(std::ifstream& is)
 {
-	int _day= 0, _month = 0, _year = 0;
+	int _day = 0, _month = 0, _year = 0;
 	is.read((char*)_day, sizeof(int));
 	is.read((char*)_month, sizeof(int));
 	is.read((char*)_year, sizeof(int));
@@ -137,7 +138,7 @@ void swapDates(Date& first, Date& second)
 void sortDates(DynamicArray<Date>& dates)
 {
 	unsigned datesCount = dates.getSize();
-	for (int i = 0; i < datesCount-1; i++)
+	for (int i = 0; i < datesCount - 1; i++)
 	{
 		Date minn = dates[i];
 		int indexMinn = i;
@@ -151,4 +152,23 @@ void sortDates(DynamicArray<Date>& dates)
 			swapDates(dates[indexMinn], dates[i]);
 		}
 	}
+}
+
+Date Date::getCurrentDate()
+{
+	std::time_t t = std::time(0);   // get time now
+	std::tm* now = std::localtime(&t);
+	Date result(now->tm_mday, now->tm_mon + 1, now->tm_year + 1900);
+	return result;
+}
+std::istream& operator>>(std::istream& is, Date& date)
+{
+	char sep = '-';
+	is >> date.year >> sep >> date.month >> sep >> date.day;
+	return is;
+}
+std::ostream& operator<<(std::ostream& os, Date& date)
+{
+	os << date.year << "-" << date.month << "-" << date.day;
+	return os;
 }

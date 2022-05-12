@@ -1,10 +1,11 @@
 ﻿// Main.cpp : Defines the entry point for the application.
 //
 #include <iostream>
-#include "TextContainer.h"
-#include"UI.h"
-#include"WareHouseLogic.h"
-#include <charconv>
+#include "Logic/TextContainer.h"
+#include"Logic/WareHouseLogic.h"
+#include"UI/UI.h"
+#include "Data/Date.h"
+#include "Data/Product.h"
 
 void TestTextContainer()
 {
@@ -26,8 +27,27 @@ void TestsearchInFile()
 	Product p("Banan", "banana co", "Vkusen");
 //	std::cout<<wc.searchProductInFile(p);
 }
+void TestAddProduct()
+{
+	WarehouseLogic wc;
+	Product p("Banan", "banana co", "Vkusen");
+	int res = wc.addProductInFile(p);
+}
+void TestSearchLastAdded()
+{
+	WarehouseLogic wc;
+	std::cout << wc.searchLastAddedId();
+}
+void TestCurrentDate()
+{
+	Date date;
+	std::cout << date.getCurrentDate();
+}
 int main()
 {
+	TestCurrentDate();
+	//TestSearchLastAdded();
+	//TestAddProduct();
 	//TestsearchInFile();
 	//UI ui;
 	//ui.StartSystem();

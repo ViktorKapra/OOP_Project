@@ -1,5 +1,5 @@
 #pragma once
-#include "TextContainer.h"
+#include "..\Logic\TextContainer.h"
 #include <ctime>
 #include <fstream>
 #include <fstream>
@@ -16,6 +16,7 @@ public:
 	void setName(char const*);
 	void setManifacturer(char const*);
 	void setComment(char const*);
+	void setId(int _id);
 	int getId()const { return id; }
 	char const* getName()const { return name.getText(); }
 	char const* getManifacturer()const{ return manifacturer.getText(); }

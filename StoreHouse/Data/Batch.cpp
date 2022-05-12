@@ -1,4 +1,4 @@
-#include"Batch.h"
+#include "Batch.h"
 #include <iostream>
 
 Batch::Batch()
@@ -29,7 +29,6 @@ void Batch::write(std::ofstream& os) const
 bool Batch::operator==(Batch const& batch)
 {
 	return this->productId == batch.productId &&
-		this->dateOfArrival == batch.dateOfArrival &&
 		this->expiryDate == batch.expiryDate;
 }
 void Batch::addQuantity(unsigned _quantity)

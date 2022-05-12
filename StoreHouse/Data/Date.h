@@ -2,7 +2,7 @@
 #define _DATE_HPP
 
 
-#include "DynamicArray.hpp"
+#include "../Logic/DynamicArray.hpp"
 #include <fstream>
 
 const int  DEFAULT_DAY = 18;
@@ -22,8 +22,11 @@ public:
 	friend bool operator>(Date const& first, Date const& second);
 	friend bool operator<(Date const& first, Date const& second);
 	friend bool operator==(Date const& first, Date const& second);
+	friend std::istream& operator>>(std::istream& is, Date& date);
+	friend std::ostream& operator<<(std::ostream& os, Date& date);
 	Date();
 	Date(int _day, int _month, int _year);
+	Date getCurrentDate();
 	void write(std::ofstream&)const;
 	void read(std::ifstream&);
 };

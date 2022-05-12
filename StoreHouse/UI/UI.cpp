@@ -1,9 +1,10 @@
 #include "UI.h"
-#include "TextContainer.h"
+#include "..\Logic\TextContainer.h"
 #include <iostream>
 #include <iomanip>
-#include "WareHouseLogic.h"
-#include "Product.h"
+#include "..\Logic\WareHouseLogic.h"
+#include "..\Data\Product.h"
+#include "..\Data\Date.h"
 
 
 void UI::StartSystem()
@@ -109,8 +110,16 @@ void UI::addProduct(WarehouseLogic & wc)
 	std::cout << "Insert comment for the product:";
 	std::cin.getline(data, MESSAGE_MAX_LENGHT); 	std::cin.ignore();
 	product.setComment(data);
-
-	wc.addProduct(product, quantity);
+	int day, year, month;
+	std::cout << "Insert expiryDate for the product";
+	std::cout << "Insert day:";
+	std::cin >> day;
+	std::cout << "Insert month:";
+	std::cin >> month;
+	std::cout << "Insert year:";
+	std::cin >> year;
+	Date expDate(day, month, year);
+	wc.addProduct(product, quantity,expDate);
 
 }
 int UI::existingWarehouse()
