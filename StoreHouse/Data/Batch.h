@@ -22,6 +22,6 @@ public:
 	Date getDateOfArrival()const { return dateOfArrival; }
 	unsigned getQuantity()const { return quantity; }
 	void read(std::ifstream& is);
-	void write(std::ofstream& os)const;
+	void write(std::ofstream& os);
 };
 #endif // !Batch_HPP

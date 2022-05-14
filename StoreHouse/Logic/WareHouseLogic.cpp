@@ -28,12 +28,14 @@ bool WarehouseLogic::putBatchInSection(Batch& batch,TextContainer const& fileNam
 	section.read(is);
 	bool result = section.addBatch(batch);
 	is.close();
-	std:: cout<<section.addBatch(batch)<<std::endl;
+	std:: cout<<result<<std::endl;
 	std::ofstream os;
-	os.open(fileName.getText(), std::ios::out | std::ios::binary);
-	
-	section.write(os);
-	os.close();
+	os.open(fileName.getText(), std::ios::out | std::ios::binary|std::ios::trunc);
+	if (os.is_open())
+	{
+		section.write(os);
+		os.close();
+	}
 	return result;
 }
 void WarehouseLogic::addBatch(int productId, unsigned quantity, Date const& expDate)
@@ -150,6 +152,11 @@ void WarehouseLogic::CleanSectionFiles(unsigned sectionCount,unsigned shelfCount
 		os.open((fileName + index + ending).getText(), std::ios::out | std::ios::binary | std::ios::trunc);
 		//os.write((char*)(&sectionCount),sizeof(unsigned));
 		os.write((char*)(&shelfCount), sizeof(unsigned));
+		for (int i = 0; i < shelfCount; i++)
+		{
+			size_t batchCount = 0;
+			os.write((char*)(&batchCount), sizeof(size_t));
+		}
 		os.close();
 		//os.open()
 	}
@@ -173,11 +180,11 @@ DynamicArray<Product> WarehouseLogic::getAllProducts()
 	std::ifstream is;
 	is.open(PRODUCT_FILE_NAME, std::ios::in);
 	Product currentProduct;
-	while (is)
+	while (!is.eof())
 	{
 		is >> currentProduct;
+		if (is)
 		products.Add(currentProduct);
-		
 	}
 	is.close();
 	return products;
@@ -207,7 +214,7 @@ unsigned WarehouseLogic::getQuantityOfProduct(Product const& product)
 		TextContainer index;
 		index.convertIntToTextContainer(i);
 		TextContainer fullFileName = fileName + index + ending;
-		result = getProductQuantityOfFile(product.getId(), fullFileName);
+		result += getProductQuantityOfFile(product.getId(), fullFileName);
 		i++;
 	} while (i <= sectionCount);
 	return result;

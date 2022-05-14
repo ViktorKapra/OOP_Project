@@ -52,7 +52,7 @@ void TestAddProductFunctionality()
 	Date expDate(3, 9, 2022);
 	WarehouseLogic wc;
 	wc.addProduct(p, 3,expDate);
-
+	
 	Product p1("Bira Pirinsko", "Pirinsko OOD", "Uvajavana bira");
 	Date expDate1(10, 10, 2022);
 	wc.addProduct(p1, 5, expDate1);
@@ -60,6 +60,7 @@ void TestAddProductFunctionality()
 	Product p2("Bira Shumensko", "Shumensko OOD", "Shumenska bira");
 	Date expDate2(30, 9, 2022);
 	wc.addProduct(p2, 2, expDate2);
+	
 	
 //	std::ifstream is;
 //	is.open("Section1.bin", std::ios::in | std::ios::binary);
@@ -69,15 +70,38 @@ void TestAddProductFunctionality()
 
 }
 
+void TestGetAllProductsAndQuantities()
+{
+	WarehouseLogic wc;
+	wc.getAllProductsAndQuantities();
+}
+void TestReadingSectionFile()
+{
+	char* fileName = "Section1.bin";
+	std::ifstream is;
+	is.open("Section1.bin", std::ios::in | std::ios::binary);
+	Section section;
+	section.read(is);
+	is.close();
+	DynamicArray<Shelf> shelfs = section.getShelfs();
+	std::cout<<shelfs[0].getOccupancy()<<std::endl;
+	std::cout<<section.getProductQuantitiy(0);
+
+}
+
 int main()
 {
+	TestGetAllProductsAndQuantities();
 	//TestCurrentDate();
 	//TestSearchLastAdded();
 	//TestAddProduct();
 	//TestsearchInFile();
-	//UI ui;
-	//ui.StartSystem();
-	TestAddProductFunctionality();
+//	UI ui;
+//	ui.StartSystem();
+//	WarehouseLogic wc;
+//	wc.ConfigWareHouse(3, 3);
+//	TestAddProductFunctionality();
+//	TestReadingSectionFile();
 	//TestReadingWritingProduct();
 //	WarehouseLogic wc;
 //	wc.ConfigWareHouse(3, 2);

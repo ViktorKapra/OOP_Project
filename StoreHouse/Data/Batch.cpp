@@ -2,7 +2,9 @@
 #include <iostream>
 
 Batch::Batch()
-{ }
+{
+
+}
 Batch::Batch(unsigned _productId, Date _expiryDate, Date _dateOfArival, unsigned _quantity):productId(_productId),
 expiryDate(_expiryDate),dateOfArrival(_dateOfArival)
 {
@@ -14,15 +16,15 @@ expiryDate(_expiryDate),dateOfArrival(_dateOfArival)
 }
 void Batch::read(std::ifstream& is)
 {
-	is.read((char*)productId, sizeof(unsigned));
-	is.read((char*)quantity, sizeof(unsigned));
+	is.read((char*)&productId, sizeof(unsigned));
+	is.read((char*)&quantity, sizeof(unsigned));
 	expiryDate.read(is);
 	dateOfArrival.read(is);
 }
-void Batch::write(std::ofstream& os) const
+void Batch::write(std::ofstream& os) 
 {
-	os.write((const char*)productId, sizeof(unsigned));
-	os.write((const char*)quantity, sizeof(unsigned));
+	os.write((char*)&productId, sizeof(unsigned));
+	os.write((char*)&quantity, sizeof(unsigned));
 	expiryDate.write(os);
 	dateOfArrival.write(os);
 }

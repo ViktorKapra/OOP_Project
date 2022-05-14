@@ -40,8 +40,8 @@ bool Section::addBatch(Batch const& batch)
 }
 void Section::read(std::ifstream& is)
 {
-	size_t shelfCount = 0;
-	is.read((char*)&shelfCount, sizeof(size_t));
+	unsigned shelfCount = 0;
+	is.read((char*)&shelfCount, sizeof(unsigned));
 	for (int i = 0; i < shelfCount; i++)
 	{
 		Shelf shelf(shelfCapacity);
@@ -52,8 +52,8 @@ void Section::read(std::ifstream& is)
 
 void Section::write(std::ofstream& os) 
 {
-	size_t shelfCount = shelfs.getSize();
-	os.write((char*)&shelfCount, sizeof(size_t));
+	unsigned shelfCount = shelfs.getSize();
+	os.write((char*)&shelfCount, sizeof(unsigned)); // unsinged
 	for (int i = 0; i < shelfCount; i++)
 	{
 		shelfs[i].write(os);

@@ -13,6 +13,7 @@ private:
 	unsigned shelfCapacity ;
 public:
 	Section();
+	DynamicArray<Shelf> getShelfs()const{ return shelfs; }
 	int searchBatch(Batch const& batch);
 	bool addBatch(Batch const& batch);
 	void read(std::ifstream& is);

@@ -112,7 +112,7 @@ DynamicArray<T>& DynamicArray<T>::operator=(DynamicArray const& other)
 template <typename T>
 T& DynamicArray<T>::operator[](size_t n)
 {
-	if (n <= size) { return elements[n]; }
+	if (n < size) { return elements[n]; }
 	else
 	{
 		throw std::invalid_argument("Argument was out of range");

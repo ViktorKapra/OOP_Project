@@ -114,16 +114,16 @@ bool Date::IsLeapYear(int _year)
 }
 void Date::write(std::ofstream& os)const
 {
-	os.write((const char*)day, sizeof(int));
-	os.write((const char*)month, sizeof(int));
-	os.write((const char*)year, sizeof(int));
+	os.write((char*)&day, sizeof(int));
+	os.write((char*)&month, sizeof(int));
+	os.write((char*)&year, sizeof(int));
 }
 void Date::read(std::ifstream& is)
 {
 	int _day = 0, _month = 0, _year = 0;
-	is.read((char*)_day, sizeof(int));
-	is.read((char*)_month, sizeof(int));
-	is.read((char*)_year, sizeof(int));
+	is.read((char*)&_day, sizeof(int));
+	is.read((char*)&_month, sizeof(int));
+	is.read((char*)&_year, sizeof(int));
 	this->setYear(_year);
 	this->setMonth(_month);
 	this->setDay(_day);

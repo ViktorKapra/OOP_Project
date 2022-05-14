@@ -9,12 +9,11 @@ Shelf::Shelf()
 {
 	occupancy = 0;
 }
-Shelf::Shelf(unsigned _capacity)
+Shelf::Shelf(unsigned _capacity):Shelf()
 {
 	if (_capacity == 0)
 		std::cerr << "Capacity can  not e 0!" << std::endl;
 	capacity = _capacity;
-	occupancy = 0;
 }
 
 bool Shelf::AddBatch(Batch const& batch)
@@ -99,24 +98,30 @@ void Shelf::read(std::ifstream& is)
 {
 	size_t batchesCount = 0;
 	is.read((char*)&batchesCount, sizeof(size_t));
-	is.read((char*)&occupancy, sizeof(occupancy));
-	is.read((char*)&capacity, sizeof(capacity));
-	for (int i = 0; i < batchesCount; i++)
+	if (batchesCount != 0)
 	{
-		Batch batch;
-		batch.read(is);
-		batches.Add(batch);
+		is.read((char*)&occupancy, sizeof(occupancy));
+		is.read((char*)&capacity, sizeof(capacity));
+		for (int i = 0; i < batchesCount; i++)
+		{
+			Batch batch;
+			batch.read(is);
+			batches.Add(batch);
+		}
 	}
 }
 void Shelf::write(std::ofstream& os)
 {
-	size_t batchesCount = 0;
+	size_t batchesCount = batches.getSize();
 	os.write((char*)&batchesCount, sizeof(size_t));
-	os.write((char*)&occupancy, sizeof(occupancy));
-	os.write((char*)&capacity, sizeof(capacity));
-	for (int i = 0; i < batchesCount; i++)
+	if (batchesCount != 0)
 	{
-		batches[i].write(os);
+		os.write((char*)&occupancy, sizeof(occupancy));
+		os.write((char*)&capacity, sizeof(capacity));
+		for (int i = 0; i < batchesCount; i++)
+		{
+			batches[i].write(os);
+		}
 	}
 
 }
@@ -129,6 +134,7 @@ bool Shelf::searchBatch(Batch const& batch)
 	{
 		if (batch == batches[i])
 			found = true;
+		i++;
 	}
 	return found;
 }
