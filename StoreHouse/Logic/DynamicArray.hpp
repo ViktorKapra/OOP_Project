@@ -1,11 +1,12 @@
 #ifndef _DynamicArray
 #define _DynamicArray
 #include <iostream>
+#include "Constants.h"
 
 const int Initial_Capacity = 4;
 
 template <typename T>
-class DynamicArray 
+class DynamicArray
 {
 private:
 	T* elements;
@@ -49,28 +50,28 @@ DynamicArray<T>::DynamicArray(T* _elements, size_t _size)
 	}
 	else
 	{
-		throw std::invalid_argument(NULL_POINTER_MESSAGE);
+		throw std::invalid_argument(Constants::NULL_POINTER_MESSAGE);
 	}
 }
 
 template<typename T>
 void DynamicArray<T>::copyArray(DynamicArray const& other)
 {
-	if (other != nullptr)
+	if (other.getSize() != 0)
 	{
 		for (int i = 0; i < other.size; i++)
 		{
-			this->Add(other.elemenst[i]);
+			this->Add(other.elements[i]);
 		}
 	}
-	else
-	{
-		std::cerr <<NULL_POINTER_MESSAGE<< std::endl;
-	}
+//	else
+//	{
+//		std::cerr << "Empty array was given!" << std::endl;
+//	}
 }
 
 template<typename T>
-DynamicArray<T>::DynamicArray( DynamicArray const& other): DynamicArray(other.elements,other.size)
+DynamicArray<T>::DynamicArray(DynamicArray const& other) : DynamicArray(other.elements, other.size)
 {
 }
 
@@ -93,13 +94,13 @@ void DynamicArray<T>::resize()
 }
 
 template<typename T>
-void DynamicArray<T>::Add( T const& element)
+void DynamicArray<T>::Add(T const& element)
 {
-		if (capacity == size)
-		{
-			resize();
-		}
-		elements[size++] = element;
+	if (capacity == size)
+	{
+		resize();
+	}
+	elements[size++] = element;
 }
 
 template<typename T>
@@ -109,22 +110,22 @@ DynamicArray<T>& DynamicArray<T>::operator=(DynamicArray const& other)
 	return *this;
 }
 template <typename T>
-T& DynamicArray<T>::operator[](size_t n) 
+T& DynamicArray<T>::operator[](size_t n)
 {
-	if (n < size ) { return elements[n]; }
-	else 
+	if (n <= size) { return elements[n]; }
+	else
 	{
 		throw std::invalid_argument("Argument was out of range");
 	}
 }
 
 template<typename T>
-bool DynamicArray<T>::RemoveAt(unsigned n) 
+bool DynamicArray<T>::RemoveAt(unsigned n)
 {
 	bool result = false;
 	if (n < size)
 	{
-		
+
 		for (int i = n; i < size - 1; i++)
 			elements[i] = elements[i + 1];
 		return true;

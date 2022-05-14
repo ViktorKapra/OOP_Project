@@ -16,7 +16,7 @@ public:
 	Batch(unsigned _productId, Date _expiryDate, Date _dateOfArival, unsigned _quantity);
 	void reduceQuantity(unsigned _quantity);
 	void addQuantity(unsigned _quantity);
-	bool operator==(Batch const&  batch);
+	bool operator==(Batch const&  batch)const;
 	unsigned getProductId()const { return productId; }
 	Date getExpiryDate()const { return expiryDate; }
 	Date getDateOfArrival()const { return dateOfArrival; }

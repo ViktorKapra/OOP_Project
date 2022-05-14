@@ -26,7 +26,7 @@ void Batch::write(std::ofstream& os) const
 	expiryDate.write(os);
 	dateOfArrival.write(os);
 }
-bool Batch::operator==(Batch const& batch)
+bool Batch::operator==(Batch const& batch) const
 {
 	return this->productId == batch.productId &&
 		this->expiryDate == batch.expiryDate;

@@ -6,6 +6,7 @@
 #include"..\Data\Date.h"
 #include "..\Data\Batch.h"
 #include "..\Data\Section.h"
+#include "Constants.h"
 
 char const* WarehouseLogic::CONFIG_FILE_NAME = "configWR.txt";
 char const* WarehouseLogic::PRODUCT_FILE_NAME = "Products.txt";
@@ -13,7 +14,7 @@ char const* WarehouseLogic::PRODUCT_FILE_NAME = "Products.txt";
 void WarehouseLogic::addProduct(Product& product, unsigned quantity, Date const& expDate)
 {
 		int productId = searchProductInFile(product);
-		if (productId == DEFAULT)
+		if (productId == Constants::DEFAULT)
 		{
 			productId = addProductInFile(product);
 		}
@@ -21,12 +22,19 @@ void WarehouseLogic::addProduct(Product& product, unsigned quantity, Date const&
 }
 bool WarehouseLogic::putBatchInSection(Batch& batch,TextContainer const& fileName)
 {
-	std::ifstream os;
-	os.open(fileName.getText(), std::ios::in | std::ios::binary);
+	std::ifstream is;
+	is.open(fileName.getText(), std::ios::in | std::ios::binary);
 	Section section;
-	section.read(os);
-
+	section.read(is);
+	bool result = section.addBatch(batch);
+	is.close();
+	std:: cout<<section.addBatch(batch)<<std::endl;
+	std::ofstream os;
+	os.open(fileName.getText(), std::ios::out | std::ios::binary);
+	
+	section.write(os);
 	os.close();
+	return result;
 }
 void WarehouseLogic::addBatch(int productId, unsigned quantity, Date const& expDate)
 {
@@ -34,15 +42,15 @@ void WarehouseLogic::addBatch(int productId, unsigned quantity, Date const& expD
 	bool success = false;
 	TextContainer fileName("Section");
 	TextContainer ending(".bin");
-	for (int i = START_SECTION_INDEX; i <= sectionCount; i++)
+	int i = START_SECTION_INDEX;
+	do
 	{
 		TextContainer index;
 		index.convertIntToTextContainer(i);
 		TextContainer fullFileName = fileName + index + ending;
 		success = putBatchInSection(batch, fullFileName);
-	}
-
-	
+		i++;
+	} while (i <= sectionCount && !success);
 }
 int WarehouseLogic::addProductInFile(Product& product)
 {
@@ -55,7 +63,7 @@ int WarehouseLogic::addProductInFile(Product& product)
 }
 int WarehouseLogic::searchLastAddedId()
 {
-	int productId = DEFAULT;
+	int productId = Constants::DEFAULT;
 	std::ifstream is;
 	is.open(PRODUCT_FILE_NAME, std::ios::in);
 	Product currentProduct;
@@ -72,11 +80,11 @@ int WarehouseLogic::searchLastAddedId()
 }
 int WarehouseLogic::searchProductInFile(Product & product)
 {
-	int result = DEFAULT;
+	int result = Constants::DEFAULT;
 	Product currentProduct;
 	std::ifstream is;
 	is.open(PRODUCT_FILE_NAME, std::ios::in);
-	while (is && result==DEFAULT)
+	while (is && result==Constants::DEFAULT)
 	{
 		is >> currentProduct;
 		if (strcmp(currentProduct.getName(), product.getName())==0)
@@ -130,17 +138,20 @@ void WarehouseLogic::createConfigFile(unsigned sectionCount, unsigned shelfCount
 		os.close();
 	}
 }
-void WarehouseLogic::CleanSectionFiles(unsigned sectionCount)
+void WarehouseLogic::CleanSectionFiles(unsigned sectionCount,unsigned shelfCount)
 {
 	TextContainer fileName("Section");
 	TextContainer ending(".bin");
-	std::ifstream is;
+	std::ofstream os;
 	for (int i = START_SECTION_INDEX; i <= sectionCount; i++)
 	{
 		TextContainer index;
 		index.convertIntToTextContainer(i);
-		is.open((fileName + index + ending).getText(), std::ios::out | std::ios::binary | std::ios::trunc);
-		is.close();
+		os.open((fileName + index + ending).getText(), std::ios::out | std::ios::binary | std::ios::trunc);
+		//os.write((char*)(&sectionCount),sizeof(unsigned));
+		os.write((char*)(&shelfCount), sizeof(unsigned));
+		os.close();
+		//os.open()
 	}
 }
 void WarehouseLogic::CleanProductFile()
@@ -152,6 +163,63 @@ void WarehouseLogic::CleanProductFile()
 void WarehouseLogic::ConfigWareHouse(unsigned sectionCount, unsigned shelfCount)
 {
 	createConfigFile(sectionCount,shelfCount);
-	CleanSectionFiles(sectionCount);
+	CleanSectionFiles(sectionCount,shelfCount);
 	CleanProductFile();
+}
+
+DynamicArray<Product> WarehouseLogic::getAllProducts()
+{
+	DynamicArray<Product> products;
+	std::ifstream is;
+	is.open(PRODUCT_FILE_NAME, std::ios::in);
+	Product currentProduct;
+	while (is)
+	{
+		is >> currentProduct;
+		products.Add(currentProduct);
+		
+	}
+	is.close();
+	return products;
+}
+
+void WarehouseLogic::getAllProductsAndQuantities()
+{
+	DynamicArray<Product> products = getAllProducts();
+	unsigned productCount = products.getSize();
+	for (int i = 0; i < productCount; i++)
+	{
+		std::cout << products[i];
+		unsigned currentProductQuantity = getQuantityOfProduct(products[i]);
+		std::cout << "Quantity :" << currentProductQuantity << std::endl;
+	}
+	
+}
+
+unsigned WarehouseLogic::getQuantityOfProduct(Product const& product)
+{
+	unsigned result = 0;
+	TextContainer fileName("Section");
+	TextContainer ending(".bin");
+	int i = START_SECTION_INDEX;
+	do
+	{
+		TextContainer index;
+		index.convertIntToTextContainer(i);
+		TextContainer fullFileName = fileName + index + ending;
+		result = getProductQuantityOfFile(product.getId(), fullFileName);
+		i++;
+	} while (i <= sectionCount);
+	return result;
+}
+
+unsigned WarehouseLogic::getProductQuantityOfFile(int productId, TextContainer const& fileName)
+{
+	int result = 0;
+	std::ifstream is;
+	is.open(fileName.getText(), std::ios::in | std::ios::binary);
+	Section section;
+	section.read(is);
+	result += section.getProductQuantitiy(productId);
+	return result;
 }

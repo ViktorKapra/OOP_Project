@@ -100,18 +100,18 @@ void UI::addProduct(WarehouseLogic & wc)
 	unsigned quantity;
 	char data[MESSAGE_MAX_LENGHT];
 	std::cout << "Insert name of the product:";
-	std::cin.getline(data, MESSAGE_MAX_LENGHT); 	std::cin.ignore();
+	std::cin.getline(data, MESSAGE_MAX_LENGHT); //	std::cin.ignore();
 	product.setName(data);
 	std::cout << "Insert quantity of the product:";
 	std::cin >> quantity; 	std::cin.ignore();
 	std::cout << "Insert manifcturer of the product:";
-	std::cin.getline(data, MESSAGE_MAX_LENGHT); 	std::cin.ignore();
+	std::cin.getline(data, MESSAGE_MAX_LENGHT); //	std::cin.ignore();
 	product.setManifacturer(data);
 	std::cout << "Insert comment for the product:";
-	std::cin.getline(data, MESSAGE_MAX_LENGHT); 	std::cin.ignore();
+	std::cin.getline(data, MESSAGE_MAX_LENGHT); //	std::cin.ignore();
 	product.setComment(data);
 	int day, year, month;
-	std::cout << "Insert expiryDate for the product";
+	std::cout << "Insert expiryDate for the product"<<std::endl;
 	std::cout << "Insert day:";
 	std::cin >> day;
 	std::cout << "Insert month:";
@@ -133,7 +133,7 @@ int UI::existingWarehouse()
 		{
 		case GetAllProdQuantitiies:
 		{
-			//wc.getAllProductsAndQuantities();
+			wc.getAllProductsAndQuantities();
 		}break;
 		case AddProd:
 		{

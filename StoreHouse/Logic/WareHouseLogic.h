@@ -9,7 +9,6 @@ private:
 	static const char* CONFIG_FILE_NAME;
 	static const char* PRODUCT_FILE_NAME;
 	static const int START_SECTION_INDEX = 1;
-	static const int DEFAULT = -1;
 
 	unsigned sectionCount;
 	unsigned shelfCount;
@@ -18,7 +17,7 @@ private:
 	void ReadConfigFile();
 	void CleanProductFile();
 	void createConfigFile(unsigned sectionCount, unsigned shelfCount);
-	void CleanSectionFiles(unsigned sectionCount);
+	void CleanSectionFiles(unsigned sectionCount, unsigned shelfCount);
 	int searchProductInFile(Product& product);
 
 public:
@@ -26,6 +25,10 @@ public:
 	WarehouseLogic();
 	bool putBatchInSection(Batch& batch, TextContainer const& fileName);
 	void ConfigWareHouse(unsigned sectionCount,unsigned shelfCount);
+	DynamicArray<Product> getAllProducts();
+	void getAllProductsAndQuantities();
+	unsigned getQuantityOfProduct(Product const& product);
+	unsigned getProductQuantityOfFile(int productId, TextContainer const& fileName);
 	int addProductInFile(Product& product);
 	int searchLastAddedId();
 	

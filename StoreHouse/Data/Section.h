@@ -13,10 +13,11 @@ private:
 	unsigned shelfCapacity ;
 public:
 	Section();
-	void addBatch(Batch const& batch);
+	int searchBatch(Batch const& batch);
+	bool addBatch(Batch const& batch);
 	void read(std::ifstream& is);
 	void write(std::ofstream& os);
-	void getProductQuanitiy(Product const& product);
+	unsigned getProductQuantitiy(int productId);
 
 };
 
