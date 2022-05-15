@@ -9,7 +9,7 @@ Shelf::Shelf()
 {
 	occupancy = 0;
 }
-Shelf::Shelf(unsigned _capacity):Shelf()
+Shelf::Shelf(unsigned _capacity) :Shelf()
 {
 	if (_capacity == 0)
 		std::cerr << "Capacity can  not e 0!" << std::endl;
@@ -44,9 +44,9 @@ bool Shelf::AddBatch(Batch const& batch)
 	else { return false; }
 }
 
-bool Shelf::ReductionOfProduct(int productId, unsigned quantity)
+bool Shelf::ReductionOfProduct(int productId, unsigned& quantity)
 {
-	if (quantity > getQuantityOfProduct(productId))
+	if (quantity < getQuantityOfProduct(productId))
 	{
 		size_t batchesQuantity = batches.getSize();
 		DynamicArray<Date> expirationDatesProducts;
@@ -57,25 +57,33 @@ bool Shelf::ReductionOfProduct(int productId, unsigned quantity)
 				expirationDatesProducts.Add(batches[i].getExpiryDate());
 			}
 		}
-		sortDates(expirationDatesProducts);
-		size_t countOfDates = expirationDatesProducts.getSize();
-		int i = 0;
-		while (i < countOfDates && quantity>0)
+		if (expirationDatesProducts.getSize() > 0)
 		{
-			Batch& expiryBatch = getFirstBatchOrDefault(productId, expirationDatesProducts[i]);
-			unsigned expiryBatchQuantity = expiryBatch.getQuantity();
-			if (expiryBatchQuantity > quantity)
+			sortDates(expirationDatesProducts);
+
+			size_t countOfDates = expirationDatesProducts.getSize();
+
+			int i = 0;
+			while (i < countOfDates && quantity>0)
 			{
-				expiryBatch.reduceQuantity(quantity);
+				Batch& expiryBatch = getFirstBatchOrDefault(productId, expirationDatesProducts[i]);
+				unsigned expiryBatchQuantity = expiryBatch.getQuantity();
+				if (expiryBatchQuantity > quantity)
+				{
+					std::cout << expiryBatch << " was reduced from " << expiryBatchQuantity << " to " << expiryBatchQuantity - quantity << std::endl;
+					expiryBatch.reduceQuantity(quantity);
+				}
+				else
+				{
+					quantity -= expiryBatchQuantity;
+					std::cout << expiryBatch << std::endl;
+					batches.Remove(expiryBatch);
+				}
+				i++;
 			}
-			else
-			{
-				quantity -= expiryBatchQuantity;
-				batches.Remove(expiryBatch);
-			}
-			i++;
+			return true;
 		}
-		return true;
+		else { return false; }
 
 	}
 	else { return false; }
@@ -152,3 +160,33 @@ unsigned Shelf::getQuantityOfProduct(int productId)
 	return quantityOfProduct;
 }
 bool Shelf::IsFull() { return occupancy >= capacity; }
+
+bool Shelf::removeBatchByProductId(int productId)
+{
+	bool wasRemoved = false;
+	int batchesCount = batches.getSize();
+	for (unsigned i = 0; i < batchesCount; i++)
+	{
+		if (batches[i].getProductId() == productId)
+		{
+			std::cout << " " << batches[i] << " ";
+			batches.RemoveAt(i);
+			wasRemoved = true;
+		}
+	}
+	return wasRemoved;
+}
+
+Date& Shelf::searchEarliestExpiryDate(int productId)
+{
+	Date earliestDate(0, 0, Constants::MAX_YEAR);
+	int batchesCount = batches.getSize();
+	for (int i = 0; i < batchesCount; i++)
+	{
+		if (earliestDate > batches[i].getExpiryDate())
+		{
+			earliestDate = batches[i].getExpiryDate();
+		}
+	}
+	return earliestDate;
+}

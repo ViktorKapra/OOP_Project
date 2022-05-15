@@ -3,7 +3,7 @@
 
 #include "..\Logic\DynamicArray.hpp"
 #include "Shelf.h"
-#include "Batch.h"
+//#include "Batch.h"
 #include "..\Logic\TextContainer.h"
 
 class Section
@@ -19,6 +19,12 @@ public:
 	void read(std::ifstream& is);
 	void write(std::ofstream& os);
 	unsigned getProductQuantitiy(int productId);
+
+	void removeBatchByProductId(int productId);
+
+	Date& searchEarliestExpiryDateOfBatch(int productId);
+
+	void reduceBatch(int productId, unsigned& quantity);
 
 };
 

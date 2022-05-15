@@ -1,3 +1,4 @@
+#pragma once
 #include "Batch.h"
 #include <iostream>
 
@@ -28,11 +29,12 @@ void Batch::write(std::ofstream& os)
 	expiryDate.write(os);
 	dateOfArrival.write(os);
 }
-bool Batch::operator==(Batch const& batch) const
+bool operator==(Batch const& first, Batch const& second)
 {
-	return this->productId == batch.productId &&
-		this->expiryDate == batch.expiryDate;
+	return first.productId == second.productId &&
+		first.expiryDate == second.expiryDate;
 }
+
 void Batch::addQuantity(unsigned _quantity)
 {
 	quantity += _quantity;
@@ -42,4 +44,11 @@ void Batch::reduceQuantity(unsigned _quantity)
 	if (_quantity > quantity)
 		std::cerr << "Quantity to reduce must be lower than current quantity" << std::endl;
 	quantity -= _quantity;
+}
+std::ostream& operator<<(std::ostream& of, Batch& batch)
+{
+	of << "Batch with product id " << batch.productId << " and quantity " << batch.quantity
+		<< " and expiry date";
+	of << batch.expiryDate;
+	return of;
 }

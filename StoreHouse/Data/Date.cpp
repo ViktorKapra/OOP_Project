@@ -1,3 +1,4 @@
+#pragma once
 #include "Date.h"
 #include <fstream>
 #include<iostream>

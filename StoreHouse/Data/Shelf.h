@@ -13,6 +13,7 @@ private:
 	DynamicArray<Batch> batches;
 	Batch& getFirstBatchOrDefault(int productId, Date const& expiryDate);
 public:
+	Date& searchEarliestExpiryDate(int productId);
 	bool searchBatch(Batch const& batch);
 	void read(std::ifstream& is);
 	void write(std::ofstream& is);
@@ -21,10 +22,11 @@ public:
 	Shelf(unsigned _capacity);
 	Shelf();
 	bool AddBatch(Batch const& batch);
-	bool ReductionOfProduct(int productId,unsigned quantity);
+	bool ReductionOfProduct(int productId,unsigned& quantity);
 
 	//DynamicArray<int> getProductsId();
 	unsigned getQuantityOfProduct(int productId);
 	bool IsFull();
+	bool removeBatchByProductId(int productId);
 };
 #endif // !SHELF_HPP

@@ -9,7 +9,7 @@ public:
 	TextContainer();
 	TextContainer(const char* text);
 	TextContainer& operator=(const TextContainer& textCon);
-	bool operator==(const TextContainer& textCon);
+	friend bool operator==(const TextContainer& textCon, const TextContainer& textCon2);
 	void setText(const char* _text);
 	TextContainer(const TextContainer& textCon);
 	~TextContainer();

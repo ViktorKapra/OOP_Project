@@ -1,3 +1,4 @@
+#pragma once
 #include"Section.h"
 #include "..\Logic\Constants.h"
 
@@ -50,7 +51,7 @@ void Section::read(std::ifstream& is)
 	}
 }
 
-void Section::write(std::ofstream& os) 
+void Section::write(std::ofstream& os)
 {
 	unsigned shelfCount = shelfs.getSize();
 	os.write((char*)&shelfCount, sizeof(unsigned)); // unsinged
@@ -59,7 +60,7 @@ void Section::write(std::ofstream& os)
 		shelfs[i].write(os);
 	}
 }
-unsigned Section::getProductQuantitiy(int productId) 
+unsigned Section::getProductQuantitiy(int productId)
 {
 	unsigned quantity = 0;
 	unsigned shelfCount = shelfs.getSize();
@@ -68,4 +69,42 @@ unsigned Section::getProductQuantitiy(int productId)
 		quantity += shelfs[i].getQuantityOfProduct(productId);
 	}
 	return quantity;
+}
+
+void Section::removeBatchByProductId(int productId)
+{
+	int shelfsCount = shelfs.getSize();
+	for (int i = 0; i < shelfsCount; i++)
+	{
+		if (shelfs[i].removeBatchByProductId(productId))
+			std::cout << "Was removed from shelf " << i << std::endl;
+	}
+}
+
+Date& Section::searchEarliestExpiryDateOfBatch(int productId)
+{
+	Date earliestExpiryDate(0, 0, Constants::MAX_YEAR);
+	int shelfsCount = shelfs.getSize();
+	for (int i = 0; i < shelfsCount; i++)
+	{
+		Date date = shelfs[i].searchEarliestExpiryDate(productId);
+		if (earliestExpiryDate > date)
+		{
+			earliestExpiryDate = date;
+		}
+	}
+	return earliestExpiryDate;
+}
+void Section::reduceBatch(int productId, unsigned& quantity)
+{
+	int shelfCount = shelfs.getSize();
+	int i = 0;
+	while (quantity > 0 && i < shelfCount)
+	{
+		if (shelfs[i].ReductionOfProduct(productId, quantity) == true)
+		{
+			std::cout << "Were removed from shelf " << i << std::endl;
+		}
+		i++;
+	}
 }

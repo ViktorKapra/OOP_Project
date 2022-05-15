@@ -111,7 +111,7 @@ void UI::addProduct(WarehouseLogic & wc)
 	std::cin.getline(data, MESSAGE_MAX_LENGHT); //	std::cin.ignore();
 	product.setComment(data);
 	int day, year, month;
-	std::cout << "Insert expiryDate for the product"<<std::endl;
+	std::cout << "Insert expiry date for the product"<<std::endl;
 	std::cout << "Insert day:";
 	std::cin >> day;
 	std::cout << "Insert month:";
@@ -121,6 +121,16 @@ void UI::addProduct(WarehouseLogic & wc)
 	Date expDate(day, month, year);
 	wc.addProduct(product, quantity,expDate);
 
+}
+void UI::takeProduct(WarehouseLogic& wc)
+{
+	char productName[MESSAGE_MAX_LENGHT];
+	unsigned quantity = 0;
+	std::cout << "Insert name of the product:";
+	std::cin.getline(productName, MESSAGE_MAX_LENGHT); //	std::cin.ignore();
+	std::cout << "Insert quantity of the product:";
+	std::cin >> quantity; 	std::cin.ignore();
+	wc.reduceProduct(productName, quantity);
 }
 int UI::existingWarehouse()
 {
@@ -141,7 +151,7 @@ int UI::existingWarehouse()
 		}break;
 		case TakeProd:
 		{
-
+			takeProduct(wc);
 		}break;
 		case CheckProd:
 		{

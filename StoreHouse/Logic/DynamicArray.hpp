@@ -24,7 +24,7 @@ public:
 	T& operator[](size_t n);
 	void Add(T const& element);
 	bool RemoveAt(unsigned n);
-	bool Remove(T&);
+	bool Remove(T const&);
 };
 
 template<typename T>
@@ -128,6 +128,7 @@ bool DynamicArray<T>::RemoveAt(unsigned n)
 
 		for (int i = n; i < size - 1; i++)
 			elements[i] = elements[i + 1];
+		size--;
 		return true;
 	}
 	else
@@ -137,7 +138,7 @@ bool DynamicArray<T>::RemoveAt(unsigned n)
 	}
 }
 template<typename T>
-bool DynamicArray<T>::Remove(T& element)
+bool DynamicArray<T>::Remove(T const& element)
 {
 	bool result = false;
 	unsigned elementIndex = 0;
@@ -149,6 +150,7 @@ bool DynamicArray<T>::Remove(T& element)
 			result = true;
 			elementIndex = i;
 		}
+		i++;
 	}
 	if (result)
 	{

@@ -14,6 +14,7 @@ public:
 	int existingWarehouse();
 	void wareHouseMenu();
 	void addProduct(WarehouseLogic& wc);
+	void takeProduct(WarehouseLogic& wc);
 };
 
 const int MESSAGE_MAX_LENGHT = 100;

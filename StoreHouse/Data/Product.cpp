@@ -1,3 +1,4 @@
+#pragma once
 #include "Product.h"
 #include <fstream>
 
@@ -52,4 +53,8 @@ std::istream& operator>>(std::istream& is, Product& product)
 	is.getline(data, sizeOfMessage);
 	product.setComment(data);
 	return is;
+}
+bool operator==(Product const& first, Product const& second)
+{
+	return first.id == second.id;
 }

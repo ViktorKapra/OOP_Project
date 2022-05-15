@@ -23,6 +23,7 @@ public:
 	char const* getComment()const { return comment.getText(); }
 	friend std::ostream&  operator<<(std::ostream& of,Product const& product);
 	friend std::istream& operator>>(std::istream& is, Product& product);
+	friend bool operator==(Product const& first, Product const& second);
 	//friend 
 };
 
