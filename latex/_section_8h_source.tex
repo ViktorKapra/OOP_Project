@@ -1,0 +1,40 @@
+\hypertarget{_section_8h_source}{}\doxysection{Section.\+h}
+\label{_section_8h_source}\index{StoreHouse/Data/Section.h@{StoreHouse/Data/Section.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef \_Section\_HPP}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define \_Section\_HPP}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}..\(\backslash\)Logic\(\backslash\)DynamicArray.hpp"{}}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}Shelf.h"{}}}
+\DoxyCodeLine{5 \textcolor{comment}{//\#include "{}Batch.h"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}..\(\backslash\)Logic\(\backslash\)TextContainer.h"{}}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{keyword}{class }\mbox{\hyperlink{class_section}{Section}}}
+\DoxyCodeLine{9 \{}
+\DoxyCodeLine{10 \textcolor{keyword}{private}:}
+\DoxyCodeLine{11     \mbox{\hyperlink{class_dynamic_array}{DynamicArray<Shelf>}} shelfs;}
+\DoxyCodeLine{12     \textcolor{keywordtype}{unsigned} shelfCapacity ;}
+\DoxyCodeLine{13 \textcolor{keyword}{public}:}
+\DoxyCodeLine{14     \mbox{\hyperlink{class_section_a77b88e06692841ba49559d22a25a09f9}{Section}}();}
+\DoxyCodeLine{15     \mbox{\hyperlink{class_dynamic_array}{DynamicArray<Shelf>}} getShelfs()\textcolor{keyword}{const}\{ \textcolor{keywordflow}{return} shelfs; \}}
+\DoxyCodeLine{16     \textcolor{keywordtype}{int} searchBatch(\mbox{\hyperlink{class_batch}{Batch}} \textcolor{keyword}{const}\& batch);}
+\DoxyCodeLine{17     \textcolor{keywordtype}{bool} addBatch(\mbox{\hyperlink{class_batch}{Batch}} \textcolor{keyword}{const}\& batch);}
+\DoxyCodeLine{18     \textcolor{keywordtype}{void} read(std::ifstream\& is);}
+\DoxyCodeLine{19     \textcolor{keywordtype}{void} write(std::ofstream\& os);}
+\DoxyCodeLine{20     \textcolor{keywordtype}{unsigned} getProductQuantitiy(\textcolor{keywordtype}{int} productId);}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22     \textcolor{keywordtype}{void} removeBatchByProductId(\textcolor{keywordtype}{int} productId);}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24     \mbox{\hyperlink{class_date}{Date}}\& searchEarliestExpiryDateOfBatch(\textcolor{keywordtype}{int} productId);}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26     \textcolor{keywordtype}{void} reduceBatch(\textcolor{keywordtype}{int} productId, \textcolor{keywordtype}{unsigned}\& quantity);}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \};}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !\_Section\_HPP}}
+\DoxyCodeLine{34 }
+
+\end{DoxyCode}

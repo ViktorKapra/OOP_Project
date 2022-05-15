@@ -1,0 +1,47 @@
+\hypertarget{class_shelf}{}\doxysection{Shelf Class Reference}
+\label{class_shelf}\index{Shelf@{Shelf}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_shelf_a16942c361487cf4d47adf92e0841fc79}\label{class_shelf_a16942c361487cf4d47adf92e0841fc79}} 
+\mbox{\hyperlink{class_date}{Date}} \& {\bfseries search\+Earliest\+Expiry\+Date} (int product\+Id)
+\item 
+\mbox{\Hypertarget{class_shelf_a693e95ac1c79fffeca036867b88105da}\label{class_shelf_a693e95ac1c79fffeca036867b88105da}} 
+bool {\bfseries search\+Batch} (\mbox{\hyperlink{class_batch}{Batch}} const \&batch)
+\item 
+\mbox{\Hypertarget{class_shelf_aacf89ee6ce23c5cb6e0f2a47ec6fcbc9}\label{class_shelf_aacf89ee6ce23c5cb6e0f2a47ec6fcbc9}} 
+void {\bfseries read} (std\+::ifstream \&is)
+\item 
+\mbox{\Hypertarget{class_shelf_a308e274782333b3810cb76b1cab3014c}\label{class_shelf_a308e274782333b3810cb76b1cab3014c}} 
+void {\bfseries write} (std\+::ofstream \&is)
+\item 
+\mbox{\Hypertarget{class_shelf_a3f38e83dd2aabb31e66a915d29f82caf}\label{class_shelf_a3f38e83dd2aabb31e66a915d29f82caf}} 
+unsigned {\bfseries get\+Occupancy} () const
+\item 
+\mbox{\Hypertarget{class_shelf_a55a333b63668e1d19f765ea7d6d95dac}\label{class_shelf_a55a333b63668e1d19f765ea7d6d95dac}} 
+unsigned {\bfseries get\+Capacity} () const
+\item 
+\mbox{\Hypertarget{class_shelf_a92f81fd719eb9b07fe9589b1668f81b2}\label{class_shelf_a92f81fd719eb9b07fe9589b1668f81b2}} 
+{\bfseries Shelf} (unsigned \+\_\+capacity)
+\item 
+\mbox{\Hypertarget{class_shelf_ad958a34ba10c50b60cdfad068d24da6d}\label{class_shelf_ad958a34ba10c50b60cdfad068d24da6d}} 
+bool {\bfseries Add\+Batch} (\mbox{\hyperlink{class_batch}{Batch}} const \&batch)
+\item 
+\mbox{\Hypertarget{class_shelf_a992b227d676246b9ba5c437f846ed69b}\label{class_shelf_a992b227d676246b9ba5c437f846ed69b}} 
+bool {\bfseries Reduction\+Of\+Product} (int product\+Id, unsigned \&quantity)
+\item 
+\mbox{\Hypertarget{class_shelf_a5531150bbb08cf3506d319417a63bb80}\label{class_shelf_a5531150bbb08cf3506d319417a63bb80}} 
+unsigned {\bfseries get\+Quantity\+Of\+Product} (int product\+Id)
+\item 
+\mbox{\Hypertarget{class_shelf_a292c96d9f7b78e3628e3be2c5c7a9f0f}\label{class_shelf_a292c96d9f7b78e3628e3be2c5c7a9f0f}} 
+bool {\bfseries Is\+Full} ()
+\item 
+\mbox{\Hypertarget{class_shelf_a49391097d013f67174e1de9c7e9d9afe}\label{class_shelf_a49391097d013f67174e1de9c7e9d9afe}} 
+bool {\bfseries remove\+Batch\+By\+Product\+Id} (int product\+Id)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Store\+House/\+Data/Shelf.\+h\item 
+Store\+House/\+Data/Shelf.\+cpp\end{DoxyCompactItemize}

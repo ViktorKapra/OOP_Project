@@ -1,3 +1,4 @@
+//! Class which describes preoduct. (It does not conatin quantities of products!)
 #pragma once
 #include "Product.h"
 #include <fstream>

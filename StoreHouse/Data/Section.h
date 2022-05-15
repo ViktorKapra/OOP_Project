@@ -1,6 +1,5 @@
 #ifndef _Section_HPP
 #define _Section_HPP
-
 #include "..\Logic\DynamicArray.hpp"
 #include "Shelf.h"
 //#include "Batch.h"

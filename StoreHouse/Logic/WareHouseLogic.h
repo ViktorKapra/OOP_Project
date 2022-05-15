@@ -3,6 +3,7 @@
 #include "..\Data\Product.h"
 #include "..\Data\Date.h"
 #include "..\Data\Section.h"
+
 class WarehouseLogic 
 {
 private:
@@ -14,21 +15,14 @@ private:
 	unsigned sectionCount;
 	unsigned shelfCount;
 
-	void addBatch(int productId, unsigned quantity,Date const& expDate);
 	void ReadConfigFile();
 	void CleanProductFile();
 	void createConfigFile(unsigned sectionCount, unsigned shelfCount);
 	void CleanSectionFiles(unsigned sectionCount, unsigned shelfCount);
 	int searchProductInFile(Product& product);
-
-public:
 	void reduceQuantityFromSection(TextContainer const& fileName, int productId, unsigned& quantity);
-	void addProduct(Product& product,unsigned quantity,Date const& expDate);
-	WarehouseLogic();
+	
 	bool putBatchInSection(Batch& batch, TextContainer const& fileName);
-	void ConfigWareHouse(unsigned sectionCount,unsigned shelfCount);
-	DynamicArray<Product> getAllProducts();
-	void getAllProductsAndQuantities();
 	unsigned getQuantityOfProduct(Product const& product);
 	unsigned getProductQuantityOfFile(int productId, TextContainer const& fileName);
 	void removeProduct(Product const& product);
@@ -36,12 +30,18 @@ public:
 	void removeProductFromSection(int productId, TextContainer const& fileName);
 	void saveChangesInSection(Section& section, TextContainer const& fileName);
 	void reduceQuantity(int productId, unsigned quantity);
-	void reduceProduct(char const* productName, unsigned quantity);
 	Product searchProductByName(char const* productName);
 	int addProductInFile(Product& product);
+	void addBatch(int productId, unsigned quantity, Date const& expDate);
 	int searchLastAddedId();
-	
+	DynamicArray<Product> getAllProducts();
+public:
 
+	WarehouseLogic();
+	void addProduct(Product& product, unsigned quantity, Date const& expDate);
+	void ConfigWareHouse(unsigned sectionCount,unsigned shelfCount);
+	void reduceProduct(char const* productName, unsigned quantity);
+	void getAllProductsAndQuantities();
 };
 
 

@@ -1,3 +1,4 @@
+//! This class conatins constants which were used.
 #pragma once
 class Constants
 {

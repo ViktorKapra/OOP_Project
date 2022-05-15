@@ -1,3 +1,4 @@
+//! Realisation of container which can store string with variable lenght.
 #include "TextContainer.h"
 #include <cstring>
 #include<iostream>

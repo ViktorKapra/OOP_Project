@@ -1,0 +1,35 @@
+\hypertarget{_product_8h_source}{}\doxysection{Product.\+h}
+\label{_product_8h_source}\index{StoreHouse/Data/Product.h@{StoreHouse/Data/Product.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include "{}..\(\backslash\)Logic\(\backslash\)TextContainer.h"{}}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <ctime>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{6 \textcolor{keyword}{class }\mbox{\hyperlink{class_product}{Product}}}
+\DoxyCodeLine{7 \{}
+\DoxyCodeLine{8 \textcolor{keyword}{private}:}
+\DoxyCodeLine{9     \textcolor{keywordtype}{int} id;}
+\DoxyCodeLine{10     \mbox{\hyperlink{class_text_container}{TextContainer}} name;}
+\DoxyCodeLine{11     \mbox{\hyperlink{class_text_container}{TextContainer}} manifacturer;}
+\DoxyCodeLine{12     \mbox{\hyperlink{class_text_container}{TextContainer}} comment;}
+\DoxyCodeLine{13 \textcolor{keyword}{public}:}
+\DoxyCodeLine{14     \mbox{\hyperlink{class_product_a847c1d85e67ce387166a597579a55135}{Product}}();}
+\DoxyCodeLine{15     \mbox{\hyperlink{class_product_a847c1d85e67ce387166a597579a55135}{Product}}(\textcolor{keywordtype}{char} \textcolor{keyword}{const}* \_name, \textcolor{keywordtype}{char} \textcolor{keyword}{const}* \_manifacturer,\textcolor{keywordtype}{char} \textcolor{keyword}{const}* \_comment);}
+\DoxyCodeLine{16     \textcolor{keywordtype}{void} setName(\textcolor{keywordtype}{char} \textcolor{keyword}{const}*);}
+\DoxyCodeLine{17     \textcolor{keywordtype}{void} setManifacturer(\textcolor{keywordtype}{char} \textcolor{keyword}{const}*);}
+\DoxyCodeLine{18     \textcolor{keywordtype}{void} setComment(\textcolor{keywordtype}{char} \textcolor{keyword}{const}*);}
+\DoxyCodeLine{19     \textcolor{keywordtype}{void} setId(\textcolor{keywordtype}{int} \_id);}
+\DoxyCodeLine{20     \textcolor{keywordtype}{int} getId()\textcolor{keyword}{const }\{ \textcolor{keywordflow}{return} id; \}}
+\DoxyCodeLine{21     \textcolor{keywordtype}{char} \textcolor{keyword}{const}* getName()\textcolor{keyword}{const }\{ \textcolor{keywordflow}{return} name.getText(); \}}
+\DoxyCodeLine{22     \textcolor{keywordtype}{char} \textcolor{keyword}{const}* getManifacturer()\textcolor{keyword}{const}\{ \textcolor{keywordflow}{return} manifacturer.getText(); \}}
+\DoxyCodeLine{23     \textcolor{keywordtype}{char} \textcolor{keyword}{const}* getComment()\textcolor{keyword}{const }\{ \textcolor{keywordflow}{return} comment.getText(); \}}
+\DoxyCodeLine{24     \textcolor{keyword}{friend} std::ostream\&  operator<<(std::ostream\& of,\mbox{\hyperlink{class_product}{Product}} \textcolor{keyword}{const}\& product);}
+\DoxyCodeLine{25     \textcolor{keyword}{friend} std::istream\& operator>>(std::istream\& is, \mbox{\hyperlink{class_product}{Product}}\& product);}
+\DoxyCodeLine{26     \textcolor{keyword}{friend} \textcolor{keywordtype}{bool} operator==(\mbox{\hyperlink{class_product}{Product}} \textcolor{keyword}{const}\& first, \mbox{\hyperlink{class_product}{Product}} \textcolor{keyword}{const}\& second);}
+\DoxyCodeLine{27     \textcolor{comment}{//friend }}
+\DoxyCodeLine{28 \};}
+\DoxyCodeLine{29 }
+
+\end{DoxyCode}

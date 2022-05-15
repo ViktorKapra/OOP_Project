@@ -1,0 +1,45 @@
+\hypertarget{_date_8h_source}{}\doxysection{Date.\+h}
+\label{_date_8h_source}\index{StoreHouse/Data/Date.h@{StoreHouse/Data/Date.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef \_DATE\_HPP}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define \_DATE\_HPP}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}../Logic/DynamicArray.hpp"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{keyword}{const} \textcolor{keywordtype}{int}  DEFAULT\_DAY = 18;}
+\DoxyCodeLine{9 \textcolor{keyword}{const} \textcolor{keywordtype}{int} DEFAULT\_MONTH = 8;}
+\DoxyCodeLine{10 \textcolor{keyword}{const} \textcolor{keywordtype}{int} DEFAULT\_YEAR = 2002;}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{keyword}{class }\mbox{\hyperlink{class_date}{Date}} \{}
+\DoxyCodeLine{13 \textcolor{keyword}{private}:}
+\DoxyCodeLine{14     \textcolor{keywordtype}{int} day;}
+\DoxyCodeLine{15     \textcolor{keywordtype}{int} month;}
+\DoxyCodeLine{16     \textcolor{keywordtype}{int} year;}
+\DoxyCodeLine{17     \textcolor{keywordtype}{bool} IsLeapYear(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{18     \textcolor{keywordtype}{void} setDay(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{19     \textcolor{keywordtype}{void} setMonth(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{20     \textcolor{keywordtype}{void} setYear(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{21 \textcolor{keyword}{public}:}
+\DoxyCodeLine{22     \textcolor{keyword}{friend} \textcolor{keywordtype}{bool} operator>(\mbox{\hyperlink{class_date}{Date}} \textcolor{keyword}{const}\& first, \mbox{\hyperlink{class_date}{Date}} \textcolor{keyword}{const}\& second);}
+\DoxyCodeLine{23     \textcolor{keyword}{friend} \textcolor{keywordtype}{bool} operator<(\mbox{\hyperlink{class_date}{Date}} \textcolor{keyword}{const}\& first, \mbox{\hyperlink{class_date}{Date}} \textcolor{keyword}{const}\& second);}
+\DoxyCodeLine{24     \textcolor{keyword}{friend} \textcolor{keywordtype}{bool} operator==(\mbox{\hyperlink{class_date}{Date}} \textcolor{keyword}{const}\& first, \mbox{\hyperlink{class_date}{Date}} \textcolor{keyword}{const}\& second);}
+\DoxyCodeLine{25     \textcolor{keyword}{friend} std::istream\& operator>>(std::istream\& is, \mbox{\hyperlink{class_date}{Date}}\& date);}
+\DoxyCodeLine{26     \textcolor{keyword}{friend} std::ostream\& operator<<(std::ostream\& os, \mbox{\hyperlink{class_date}{Date}}\& date);}
+\DoxyCodeLine{27     \mbox{\hyperlink{class_date}{Date}}();}
+\DoxyCodeLine{28     \mbox{\hyperlink{class_date}{Date}}(\textcolor{keywordtype}{int} \_day, \textcolor{keywordtype}{int} \_month, \textcolor{keywordtype}{int} \_year);}
+\DoxyCodeLine{29     \mbox{\hyperlink{class_date}{Date}} getCurrentDate();}
+\DoxyCodeLine{30     \textcolor{keywordtype}{void} write(std::ofstream\&)\textcolor{keyword}{const};}
+\DoxyCodeLine{31     \textcolor{keywordtype}{void} read(std::ifstream\&);}
+\DoxyCodeLine{32 \};}
+\DoxyCodeLine{33  \textcolor{comment}{//bool operator>(Date const\& first,Date const\& second);}}
+\DoxyCodeLine{34  \textcolor{comment}{//bool operator<(Date const\& first, Date const\& second);}}
+\DoxyCodeLine{35  \textcolor{comment}{//bool operator==(Date const\& first, Date const\& second);}}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37  \textcolor{keywordtype}{void} swapDates(\mbox{\hyperlink{class_date}{Date}}\& first, \mbox{\hyperlink{class_date}{Date}}\& second);}
+\DoxyCodeLine{38  \textcolor{keywordtype}{void} sortDates(\mbox{\hyperlink{class_dynamic_array}{DynamicArray<Date>}}\& dates);}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !\_DATE}}
+
+\end{DoxyCode}

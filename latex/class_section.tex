@@ -1,0 +1,41 @@
+\hypertarget{class_section}{}\doxysection{Section Class Reference}
+\label{class_section}\index{Section@{Section}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_section_a77b88e06692841ba49559d22a25a09f9}\label{class_section_a77b88e06692841ba49559d22a25a09f9}} 
+{\bfseries Section} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_shelf}{Shelf}} capacity is set constant to 20 (In next release this must be configured by the user) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_section_aef34b922a5e6ebee90c2534882be7e7c}\label{class_section_aef34b922a5e6ebee90c2534882be7e7c}} 
+\mbox{\hyperlink{class_dynamic_array}{Dynamic\+Array}}$<$ \mbox{\hyperlink{class_shelf}{Shelf}} $>$ {\bfseries get\+Shelfs} () const
+\item 
+\mbox{\Hypertarget{class_section_a040ad3db4b0f49bdff14a252c2bd95c1}\label{class_section_a040ad3db4b0f49bdff14a252c2bd95c1}} 
+int {\bfseries search\+Batch} (\mbox{\hyperlink{class_batch}{Batch}} const \&batch)
+\item 
+\mbox{\Hypertarget{class_section_aa6f8ffa0818c4771d2e30e3aca1e2266}\label{class_section_aa6f8ffa0818c4771d2e30e3aca1e2266}} 
+bool {\bfseries add\+Batch} (\mbox{\hyperlink{class_batch}{Batch}} const \&batch)
+\item 
+\mbox{\Hypertarget{class_section_a53ada6d34aec81150e58d75da45273ac}\label{class_section_a53ada6d34aec81150e58d75da45273ac}} 
+void {\bfseries read} (std\+::ifstream \&is)
+\item 
+\mbox{\Hypertarget{class_section_a1a1bee20d4263b8ef9719158e15a085b}\label{class_section_a1a1bee20d4263b8ef9719158e15a085b}} 
+void {\bfseries write} (std\+::ofstream \&os)
+\item 
+\mbox{\Hypertarget{class_section_a82fe07524911a92a608f4d024f70d46f}\label{class_section_a82fe07524911a92a608f4d024f70d46f}} 
+unsigned {\bfseries get\+Product\+Quantitiy} (int product\+Id)
+\item 
+\mbox{\Hypertarget{class_section_a9bcd873ff165bc3641312fb6da29b5a4}\label{class_section_a9bcd873ff165bc3641312fb6da29b5a4}} 
+void {\bfseries remove\+Batch\+By\+Product\+Id} (int product\+Id)
+\item 
+\mbox{\Hypertarget{class_section_aeeffa4ae9e325bdad5fb770f009628bd}\label{class_section_aeeffa4ae9e325bdad5fb770f009628bd}} 
+\mbox{\hyperlink{class_date}{Date}} \& {\bfseries search\+Earliest\+Expiry\+Date\+Of\+Batch} (int product\+Id)
+\item 
+\mbox{\Hypertarget{class_section_a557b7e2db71b57198a1e6d3814ed222e}\label{class_section_a557b7e2db71b57198a1e6d3814ed222e}} 
+void {\bfseries reduce\+Batch} (int product\+Id, unsigned \&quantity)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Store\+House/\+Data/Section.\+h\item 
+Store\+House/\+Data/Section.\+cpp\end{DoxyCompactItemize}

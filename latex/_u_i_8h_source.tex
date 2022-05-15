@@ -1,0 +1,46 @@
+\hypertarget{_u_i_8h_source}{}\doxysection{UI.\+h}
+\label{_u_i_8h_source}\index{StoreHouse/UI/UI.h@{StoreHouse/UI/UI.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#ifndef \_UI\_HPP}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define \_UI\_HPP}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}../Logic/WareHouseLogic.h"{}}}
+\DoxyCodeLine{6 \textcolor{keyword}{class }\mbox{\hyperlink{class_u_i}{UI}}}
+\DoxyCodeLine{7 \{}
+\DoxyCodeLine{8 \textcolor{keyword}{public}:}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11     \textcolor{keywordtype}{void} StartSystem();}
+\DoxyCodeLine{12     \textcolor{keywordtype}{void} configMenu();}
+\DoxyCodeLine{13     \textcolor{keywordtype}{void} devider();}
+\DoxyCodeLine{14     \textcolor{keywordtype}{int} chooseFunction();}
+\DoxyCodeLine{15     \textcolor{keywordtype}{int} ConfigNewWareHouse();}
+\DoxyCodeLine{16     \textcolor{keywordtype}{int} existingWarehouse();}
+\DoxyCodeLine{17     \textcolor{keywordtype}{void} wareHouseMenu();}
+\DoxyCodeLine{18     \textcolor{keywordtype}{void} addProduct(\mbox{\hyperlink{class_warehouse_logic}{WarehouseLogic}}\& wc);}
+\DoxyCodeLine{19     \textcolor{keywordtype}{void} takeProduct(\mbox{\hyperlink{class_warehouse_logic}{WarehouseLogic}}\& wc);}
+\DoxyCodeLine{20 \};}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{keyword}{const} \textcolor{keywordtype}{int} MESSAGE\_MAX\_LENGHT = 100;}
+\DoxyCodeLine{23 \textcolor{keyword}{enum} ExistFunctions}
+\DoxyCodeLine{24 \{}
+\DoxyCodeLine{25     GetAllProdQuantitiies = 1,}
+\DoxyCodeLine{26     AddProd = 2,}
+\DoxyCodeLine{27     TakeProd = 3,}
+\DoxyCodeLine{28     CheckProd = 4,}
+\DoxyCodeLine{29     Clearing = 5,}
+\DoxyCodeLine{30     Close = 6}
+\DoxyCodeLine{31 \};}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{keyword}{enum} ConfigFunctions}
+\DoxyCodeLine{34 \{}
+\DoxyCodeLine{35     NewWareHouse = 1,}
+\DoxyCodeLine{36     OpenExistingWarehouse = 2,}
+\DoxyCodeLine{37     Exit = 3}
+\DoxyCodeLine{38 \};}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !\_UI\_HPP}}
+\DoxyCodeLine{41 }
+
+\end{DoxyCode}

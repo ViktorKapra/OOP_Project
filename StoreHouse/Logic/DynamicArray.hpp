@@ -1,3 +1,4 @@
+//!Template container with variable lenght
 #ifndef _DynamicArray
 #define _DynamicArray
 #include <iostream>

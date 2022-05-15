@@ -1,3 +1,5 @@
+//! This class manages user expirience.
+//! 
 #ifndef _UI_HPP
 #define _UI_HPP
 #include "../Logic/WareHouseLogic.h"

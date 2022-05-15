@@ -1,0 +1,47 @@
+\hypertarget{class_batch}{}\doxysection{Batch Class Reference}
+\label{class_batch}\index{Batch@{Batch}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_batch_a07d157059b51f5ba6c0e8b2c46e33943}\label{class_batch_a07d157059b51f5ba6c0e8b2c46e33943}} 
+{\bfseries Batch} (unsigned \+\_\+product\+Id, \mbox{\hyperlink{class_date}{Date}} \+\_\+expiry\+Date, \mbox{\hyperlink{class_date}{Date}} \+\_\+date\+Of\+Arival, unsigned \+\_\+quantity)
+\item 
+\mbox{\Hypertarget{class_batch_aaef7e73204abac847b653acd17c94414}\label{class_batch_aaef7e73204abac847b653acd17c94414}} 
+void {\bfseries reduce\+Quantity} (unsigned \+\_\+quantity)
+\item 
+\mbox{\Hypertarget{class_batch_ae3fe25284d388139a3710758101b1772}\label{class_batch_ae3fe25284d388139a3710758101b1772}} 
+void {\bfseries add\+Quantity} (unsigned \+\_\+quantity)
+\item 
+\mbox{\Hypertarget{class_batch_a2efe03028170eea52d4d1791cade688a}\label{class_batch_a2efe03028170eea52d4d1791cade688a}} 
+unsigned {\bfseries get\+Product\+Id} () const
+\item 
+\mbox{\Hypertarget{class_batch_a79ca608fc2e5006546221676592ed881}\label{class_batch_a79ca608fc2e5006546221676592ed881}} 
+\mbox{\hyperlink{class_date}{Date}} {\bfseries get\+Expiry\+Date} () const
+\item 
+\mbox{\Hypertarget{class_batch_a5f86f586ab3e35e688991127f1842da1}\label{class_batch_a5f86f586ab3e35e688991127f1842da1}} 
+\mbox{\hyperlink{class_date}{Date}} {\bfseries get\+Date\+Of\+Arrival} () const
+\item 
+\mbox{\Hypertarget{class_batch_a209057d82055faa2d4423e1962290c0d}\label{class_batch_a209057d82055faa2d4423e1962290c0d}} 
+unsigned {\bfseries get\+Quantity} () const
+\item 
+\mbox{\Hypertarget{class_batch_af07c7cbfbffaaffc28d984b986842b15}\label{class_batch_af07c7cbfbffaaffc28d984b986842b15}} 
+void {\bfseries read} (std\+::ifstream \&is)
+\item 
+\mbox{\Hypertarget{class_batch_a42eea02f3373bbc7207b70955744ade2}\label{class_batch_a42eea02f3373bbc7207b70955744ade2}} 
+void {\bfseries write} (std\+::ofstream \&os)
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_batch_a9279024d8d9727514918ebbe6d9a5a53}\label{class_batch_a9279024d8d9727514918ebbe6d9a5a53}} 
+bool {\bfseries operator==} (\mbox{\hyperlink{class_batch}{Batch}} const \&first, \mbox{\hyperlink{class_batch}{Batch}} const \&second)
+\item 
+\mbox{\Hypertarget{class_batch_a07145a858c7fe818d107d6b2ddf12e7d}\label{class_batch_a07145a858c7fe818d107d6b2ddf12e7d}} 
+std\+::ostream \& {\bfseries operator$<$$<$} (std\+::ostream \&of, \mbox{\hyperlink{class_batch}{Batch}} \&batch)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Store\+House/\+Data/Batch.\+h\item 
+Store\+House/\+Data/Batch.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,34 @@
+\hypertarget{_batch_8h_source}{}\doxysection{Batch.\+h}
+\label{_batch_8h_source}\index{StoreHouse/Data/Batch.h@{StoreHouse/Data/Batch.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef Batch\_HPP}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define Batch\_HPP}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}Date.h"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{7 \textcolor{keyword}{class }\mbox{\hyperlink{class_batch}{Batch}}}
+\DoxyCodeLine{8 \{}
+\DoxyCodeLine{9 \textcolor{keyword}{private}:}
+\DoxyCodeLine{10     \textcolor{keywordtype}{unsigned} productId;}
+\DoxyCodeLine{11     \mbox{\hyperlink{class_date}{Date}} expiryDate;}
+\DoxyCodeLine{12     \mbox{\hyperlink{class_date}{Date}} dateOfArrival;}
+\DoxyCodeLine{13     \textcolor{keywordtype}{unsigned} quantity;}
+\DoxyCodeLine{14 \textcolor{keyword}{public}:}
+\DoxyCodeLine{15     \mbox{\hyperlink{class_batch}{Batch}}();}
+\DoxyCodeLine{16     \mbox{\hyperlink{class_batch}{Batch}}(\textcolor{keywordtype}{unsigned} \_productId, \mbox{\hyperlink{class_date}{Date}} \_expiryDate, \mbox{\hyperlink{class_date}{Date}} \_dateOfArival, \textcolor{keywordtype}{unsigned} \_quantity);}
+\DoxyCodeLine{17     \textcolor{keywordtype}{void} reduceQuantity(\textcolor{keywordtype}{unsigned} \_quantity);}
+\DoxyCodeLine{18     \textcolor{keywordtype}{void} addQuantity(\textcolor{keywordtype}{unsigned} \_quantity);}
+\DoxyCodeLine{19     \textcolor{keywordtype}{unsigned} getProductId()\textcolor{keyword}{const }\{ \textcolor{keywordflow}{return} productId; \}}
+\DoxyCodeLine{20     \mbox{\hyperlink{class_date}{Date}} getExpiryDate()\textcolor{keyword}{const }\{ \textcolor{keywordflow}{return} expiryDate; \}}
+\DoxyCodeLine{21     \mbox{\hyperlink{class_date}{Date}} getDateOfArrival()\textcolor{keyword}{const }\{ \textcolor{keywordflow}{return} dateOfArrival; \}}
+\DoxyCodeLine{22     \textcolor{keywordtype}{unsigned} getQuantity()\textcolor{keyword}{const }\{ \textcolor{keywordflow}{return} quantity; \}}
+\DoxyCodeLine{23     \textcolor{keywordtype}{void} read(std::ifstream\& is);}
+\DoxyCodeLine{24     \textcolor{keywordtype}{void} write(std::ofstream\& os);}
+\DoxyCodeLine{25     \textcolor{keyword}{friend} \textcolor{keywordtype}{bool} operator==(\mbox{\hyperlink{class_batch}{Batch}} \textcolor{keyword}{const}\& first, \mbox{\hyperlink{class_batch}{Batch}} \textcolor{keyword}{const}\& second);}
+\DoxyCodeLine{26     \textcolor{keyword}{friend} std::ostream\& operator<<(std::ostream\& of, \mbox{\hyperlink{class_batch}{Batch}} \& batch);}
+\DoxyCodeLine{27 \};}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// !Batch\_HPP}}
+
+\end{DoxyCode}
